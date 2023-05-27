@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Vintage_Signature">
+        <item name="android:fontFamily">@font/vintage_signature</item>
+    </style>
+    <style name="opensanssemibold" >
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+    </style>
+    <style name="opensansextrabold" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/opensans_extrabold</item>
+    </style>
+
+    <style name="fonteMarca">
+        <item name="android:fontFamily">@font/fontmarca</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+
+</resources>
