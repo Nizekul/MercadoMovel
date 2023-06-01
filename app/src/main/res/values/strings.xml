@@ -1,4 +1,44 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Mercado Movel</string>
+
+    <!-- Cadastro -->
+    <string name="novo_produto">CADASTRAR PRODUTO</string>
+    <string name="novo_cliente">CADASTRAR CLIENTE</string>
+    <string name="cadastrar">Cadastrar</string>
+
+
+    <!-- Produto -->
+    <string name="nome">Nome</string>
+    <string name="descricao">Descrição</string>
+    <string name="valor">Valor</string>
+    <string name="data_vencimento">Validade</string>
+    <string name="quantidade">Quantidade</string>
+    <string name="qtd_produtos">QTD</string>
+
+    <!-- Cliente -->
+    <string name="nome_cliente">Nome</string>
+    <string name="endereco_cliente">Endereço</string>
+    <string name="tel_cliente">Telefone</string>
+    <string name="email_cliente">E-mail</string>
+    <string name="cnpj_cliente">CNPJ</string>
+    <string name="empresa">Empresa</string>
+
+    <!-- Icones -->
+    <string name="cilenteIcon">Clientes</string>
+
+
+    <!-- Botoes -->
+    <string name="cancelar">Cancelar</string>
+    <string name="salvar">Salvar</string>
+    <string name="home">Início</string>
+    <string name="produtos">Produtos</string>
+    <string name="vendas">Vendas</string>
+    <string name="acoes">Ações</string>
+    <string name="buscar">Buscar</string>
+    <string name="cliente">Cliente</string>
+    <string name="debitos">Débitos</string>
+    <string name="dtInicio">Data Início</string>
+    <string name="dtFim">Data Fim</string>
+    <string name="addCliente">Cliente</string>
+
 </resources>

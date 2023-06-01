@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
-import com.example.mercadomovel.model.ProdutoModel
+import com.example.mercadomovel.view.Clientes.model.ProdutoModel
 
 @Database(entities = [ProdutoModel::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {

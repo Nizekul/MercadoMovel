@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".view.Produtos.ProdutosListFragment">
+
+    <EditText
+        android:id="@+id/nomeEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/search_24"
+        android:hint="@string/nome_cliente"
+        android:inputType="text"
+        android:textColor="@color/preto"
+        android:textColorHint="@color/preto"
+        app:layout_constraintBottom_toTopOf="@+id/qtdtextID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <EditText
+        android:id="@+id/valorEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/search_24"
+        android:hint="@string/valor"
+        android:inputType="text"
+        android:textColor="@color/preto"
+        android:textColorHint="@color/preto"
+        app:layout_constraintBottom_toTopOf="@+id/valorTextID"
+        app:layout_constraintStart_toEndOf="@+id/nomeEditText"
+        app:layout_constraintWidth_percent="0.33" />
+
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ciano"
+        android:text="@string/buscar"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/acoestextID"
+        app:layout_constraintStart_toEndOf="@+id/valorEditText"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <TextView
+        android:id="@+id/qtdtextID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pretoclaro"
+        android:gravity="center"
+        android:text="@string/qtd_produtos"
+        android:textAppearance="@style/opensanssemibold"
+        android:textColor="@color/branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/qtdProdutosID"
+        app:layout_constraintEnd_toStartOf="@+id/nometextID"
+        app:layout_constraintWidth_percent="0.15" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/qtdProdutosID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.15" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/qtdProdutosID"
+        app:layout_constraintEnd_toStartOf="@+id/nomeProdutoID"
+        app:layout_constraintStart_toEndOf="@+id/qtdProdutosID"
+        app:layout_constraintTop_toTopOf="@+id/qtdProdutosID" />
+
+    <TextView
+        android:id="@+id/nometextID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pretoclaro"
+        android:gravity="center"
+        android:text="@string/nome"
+        android:textAppearance="@style/opensanssemibold"
+        android:textColor="@color/branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/nomeProdutoID"
+        app:layout_constraintStart_toEndOf="@+id/qtdtextID"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nomeProdutoID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintStart_toEndOf="@+id/divider"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/nomeProdutoID"
+        app:layout_constraintStart_toEndOf="@+id/nomeProdutoID"
+        app:layout_constraintTop_toTopOf="@+id/nomeProdutoID" />
+
+    <TextView
+        android:id="@+id/valorTextID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pretoclaro"
+        android:gravity="center"
+        android:text="@string/valor"
+        android:textAppearance="@style/opensanssemibold"
+        android:textColor="@color/branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/valorProdutoID"
+        app:layout_constraintStart_toEndOf="@+id/nometextID"
+        app:layout_constraintWidth_percent="0.26" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/valorProdutoID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintStart_toEndOf="@+id/divider2"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/valorProdutoID"
+        app:layout_constraintStart_toEndOf="@+id/valorProdutoID"
+        app:layout_constraintTop_toTopOf="@+id/valorProdutoID" />
+
+    <TextView
+        android:id="@+id/acoestextID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pretoclaro"
+        android:gravity="center"
+        android:text="@string/acoes"
+        android:textAppearance="@style/opensanssemibold"
+        android:textColor="@color/branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/acoesID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/valorTextID"
+        app:layout_constraintWidth_percent="0.24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/acoesID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintStart_toEndOf="@+id/divider3"
+        app:layout_constraintWidth_percent="0.24" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

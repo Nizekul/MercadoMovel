@@ -1,4 +1,4 @@
-package com.example.mercadomovel.model
+package com.example.mercadomovel.view.Clientes.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
