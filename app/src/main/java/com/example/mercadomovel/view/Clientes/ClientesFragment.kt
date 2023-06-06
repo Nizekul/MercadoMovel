@@ -24,6 +24,8 @@ class ClientesFragment : Fragment() {
         binding = FragmentCadastrosClientesBinding.inflate(inflater, container, false)
         navigation = findNavController()
 
+        binding.cancelarButton.setOnClickListener { navigation.navigateUp() }
+
         return binding.root
     }
 

@@ -1,4 +1,4 @@
-package com.example.mercadomovel.view
+package com.example.mercadomovel.view.Home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -38,7 +38,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val menu = requireActivity().findViewById<MaterialToolbar>(R.id.menu)
-
         menu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.homeIconID -> {
@@ -50,11 +49,11 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.produtosIconID -> {
-                    navigation.navigate(R.id.action_homeFragment_to_produtosListFragment)
+                    navigation.navigate(R.id.produtosListFragment)
                     true
                 }
                 R.id.clienteIconID -> {
-                    navigation.navigate(R.id.action_homeFragment_to_clientesListFragment)
+                    navigation.navigate(R.id.clientesListFragment)
                     true
                 }
 
@@ -63,6 +62,5 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
     }
 }

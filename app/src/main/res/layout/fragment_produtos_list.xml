@@ -33,16 +33,29 @@
         app:layout_constraintStart_toEndOf="@+id/nomeEditText"
         app:layout_constraintWidth_percent="0.33" />
 
+    <Button
+        android:id="@+id/btnAdicionarProduto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ciano"
+        android:textSize="13sp"
+        android:drawableLeft="@drawable/add"
+        android:textFontWeight="23"
+        android:text="@string/adicionar_produto"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.36" />
 
     <Button
         android:id="@+id/btnBuscar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/ciano"
+        android:backgroundTint="@color/pretoclaro"
         android:text="@string/buscar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/acoestextID"
-        app:layout_constraintStart_toEndOf="@+id/valorEditText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.33" />
 
     <TextView
@@ -66,7 +79,7 @@
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.15" />
 
@@ -100,7 +113,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider"
         app:layout_constraintWidth_percent="0.35" />
 
@@ -133,7 +146,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider2"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -167,7 +180,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider3"
         app:layout_constraintWidth_percent="0.24" />
 

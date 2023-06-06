@@ -57,9 +57,22 @@
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/valorTextID"
-        app:layout_constraintEnd_toStartOf="@+id/btnBuscar"
+        app:layout_constraintStart_toEndOf="@+id/nomeEditText"
         app:layout_constraintWidth_percent="0.33" />
 
+    <Button
+        android:id="@+id/btnAdicionar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ciano"
+        android:textSize="13sp"
+        android:drawableLeft="@drawable/add"
+        android:textFontWeight="23"
+        android:text="@string/cliente"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.33" />
 
     <Button
         android:id="@+id/btnBuscar"
@@ -92,7 +105,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.17" />
 
@@ -126,7 +139,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider"
         app:layout_constraintWidth_percent="0.33" />
 
@@ -159,7 +172,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider2"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -193,7 +206,7 @@
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider3"
         app:layout_constraintWidth_percent="0.24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,5 +40,6 @@
     <string name="dtInicio">Data Início</string>
     <string name="dtFim">Data Fim</string>
     <string name="addCliente">Cliente</string>
+    <string name="adicionar_produto">Produto</string>
 
 </resources>
