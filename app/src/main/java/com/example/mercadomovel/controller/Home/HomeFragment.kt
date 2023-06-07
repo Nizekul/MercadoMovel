@@ -1,4 +1,4 @@
-package com.example.mercadomovel.view.Home
+package com.example.mercadomovel.controller.Home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

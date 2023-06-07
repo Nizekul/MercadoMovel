@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/cliente_fragmentID"
-    tools:context=".view.Clientes.ClientesFragment"
+    tools:context=".controller.Clientes.ClientesFragment"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.Guideline

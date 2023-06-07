@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.mercadomovel.view.Home.HomeFragment"
+        android:name="com.example.mercadomovel.controller.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/produtosListFragment"
-        android:name="com.example.mercadomovel.view.Produtos.ProdutosListFragment"
+        android:name="com.example.mercadomovel.controller.Produtos.ProdutosListFragment"
         android:label="fragment_produtos_list"
         tools:layout="@layout/fragment_produtos_list" >
         <action
@@ -28,12 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/clientesFragment"
-        android:name="com.example.mercadomovel.view.Clientes.ClientesFragment"
+        android:name="com.example.mercadomovel.controller.Clientes.ClientesFragment"
         android:label="fragment_cadastros_clientes"
         tools:layout="@layout/fragment_cadastros_clientes" />
     <fragment
         android:id="@+id/clientesListFragment"
-        android:name="com.example.mercadomovel.view.Clientes.ClientesListFragment"
+        android:name="com.example.mercadomovel.controller.Clientes.ClientesListFragment"
         android:label="fragment_clientes_list"
         tools:layout="@layout/fragment_clientes_list" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/produtosFragment"
-        android:name="com.example.mercadomovel.view.Produtos.ProdutosFragment"
+        android:name="com.example.mercadomovel.controller.Produtos.ProdutosFragment"
         android:label="fragment_cadastros_produtos"
         tools:layout="@layout/fragment_cadastros_produtos" />
 </navigation>

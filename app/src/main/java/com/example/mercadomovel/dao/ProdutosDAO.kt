@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.mercadomovel.view.Clientes.model.ProdutoModel
+import com.example.mercadomovel.model.ProdutoModel
 
 @Dao
 interface ProdutosDAO {
@@ -29,6 +29,6 @@ interface ProdutosDAO {
     fun getPorID(id: Int): ProdutoModel?
 
     @Query("SELECT * FROM Produtos")
-    fun getTodas(): List<ProdutoModel>
+    fun getTodas(): List<ProdutoModel>?
 
 }
