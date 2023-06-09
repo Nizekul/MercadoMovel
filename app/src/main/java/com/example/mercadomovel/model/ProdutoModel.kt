@@ -18,7 +18,5 @@ data class ProdutoModel(
     @ColumnInfo(name = "valor") val valor: Double,
     @ColumnInfo(name = "dtVencimento") val dtVencimento: Date? = null,
     @ColumnInfo(name = "quantidade") val quantidade: Int?
-
-
 )
 

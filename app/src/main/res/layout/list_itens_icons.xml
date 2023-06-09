@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/editar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/editar" />
+
+    <ImageView
+        android:id="@+id/remove_cliente"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/remove_cliente" />
+
+    <ImageView
+        android:id="@+id/remove_produto"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/remove_produtos" />
+
+
+</GridLayout>

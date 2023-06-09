@@ -56,6 +56,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+    //MaskEditText dependencies
+//    implementation 'ru.egslava:MaskedEditText:1.0.4'
+
     // Room database dependencies
     implementation 'androidx.room:room-runtime:2.4.1'
     kapt 'androidx.room:room-compiler:2.4.1'

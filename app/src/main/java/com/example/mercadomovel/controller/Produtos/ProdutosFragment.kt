@@ -1,20 +1,25 @@
 package com.example.mercadomovel.controller.Produtos
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.mercadomovel.R
 import com.example.mercadomovel.databinding.FragmentCadastrosProdutosBinding
+import com.example.mercadomovel.databinding.FragmentProdutosListBinding
 import com.example.mercadomovel.model.ProdutoModel
 import com.example.projetinhodeestudo.data.AppDataBase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 import javax.crypto.NullCipher
 
 
@@ -46,7 +51,7 @@ class ProdutosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            produtoID = it.getInt("notaID", -1)
+            produtoID = it.getInt("produtoID", -1)
         }
 
         produtoID?.let {
@@ -55,7 +60,9 @@ class ProdutosFragment : Fragment() {
             binding.nomeEditText.setText(nota?.nome)
             binding.descricaoEditText.setText(nota?.descricao)
             binding.valorEditText.setText(nota?.valor.toString())
-            binding.dataVencimentoEditText.setText(nota?.dtVencimento.toString())
+            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = dateFormat.format(nota?.dtVencimento)
+            binding.dataVencimentoEditText.setText(formattedDate)
             binding.quantidadeEditText.setText(nota?.quantidade.toString())
         }
 
@@ -90,12 +97,24 @@ class ProdutosFragment : Fragment() {
             var produto = ProdutoModel(null, nome, descricao, valor.toDouble(), data, qtdProduto)
 
             id?.let {
+                produto.id = id
                 produtoDAO.update(produto)
             } ?: run {
                 produtoDAO.insert(produto)
             }
 
             navigation.navigateUp()
+        }
+    }
+
+    private fun validarData(validade: String) {
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
+
+        try {
+            val formattedDate = dateFormat.format(dateFormat.parse(validade))
+            binding.dataVencimentoEditText.setText(formattedDate)
+        } catch (e: ParseException) {
+            showToast("Validade precisa ser preenchida no formato de Dia-Mês-Ano!")
         }
     }
 
