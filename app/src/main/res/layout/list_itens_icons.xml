@@ -3,24 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/editar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="20dp"
         android:src="@drawable/editar" />
 
     <ImageView
         android:id="@+id/remove_cliente"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
         android:src="@drawable/remove_cliente" />
 
     <ImageView
         android:id="@+id/remove_produto"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
         android:src="@drawable/remove_produtos" />
 
 

@@ -63,7 +63,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="8dp"
         android:hint="@string/valor"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/dataVencimentoEditText"

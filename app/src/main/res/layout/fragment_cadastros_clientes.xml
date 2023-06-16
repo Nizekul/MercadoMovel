@@ -37,12 +37,12 @@
         android:inputType="text"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
-        app:layout_constraintBottom_toTopOf="@+id/nome_empresa"
+        app:layout_constraintBottom_toTopOf="@+id/nomeEmpresa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/nome_empresa"
+        android:id="@+id/nomeEmpresa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -51,12 +51,12 @@
         android:inputType="text"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
-        app:layout_constraintBottom_toTopOf="@+id/descricaoEditText"
+        app:layout_constraintBottom_toTopOf="@+id/enderecotextID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/descricaoEditText"
+        android:id="@+id/enderecotextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -65,12 +65,12 @@
         android:inputType="text"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
-        app:layout_constraintBottom_toTopOf="@+id/valorEditText"
+        app:layout_constraintBottom_toTopOf="@+id/telefonetextID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/valorEditText"
+        android:id="@+id/telefonetextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -79,32 +79,32 @@
         android:inputType="numberDecimal"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
-        app:layout_constraintBottom_toTopOf="@+id/dataVencimentoEditText"
+        app:layout_constraintBottom_toTopOf="@+id/emailtextID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/dataVencimentoEditText"
+        android:id="@+id/emailtextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="8dp"
         android:hint="@string/email_cliente"
-        android:inputType="date"
+        android:inputType="textEmailAddress"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
-        app:layout_constraintBottom_toTopOf="@+id/quantidadeEditText"
+        app:layout_constraintBottom_toTopOf="@+id/cnpjtextID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/quantidadeEditText"
+        android:id="@+id/cnpjtextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="8dp"
         android:hint="@string/cnpj_cliente"
-        android:inputType="number"
+        android:inputType="textPostalAddress"
         android:textColor="@color/preto"
         android:textColorHint="@color/preto"
         app:layout_constraintTop_toTopOf="@id/centerGuide"
@@ -134,6 +134,6 @@
         android:text="@string/salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantidadeEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/cnpjtextID" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

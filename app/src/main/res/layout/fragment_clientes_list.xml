@@ -95,29 +95,29 @@
         android:textAppearance="@style/opensanssemibold"
         android:textColor="@color/branco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/qtdProdutosID"
+        app:layout_constraintBottom_toTopOf="@id/debitosViewID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.17" />
+        app:layout_constraintWidth_percent="0.18" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/qtdProdutosID"
+    <ListView
+        android:id="@+id/debitosViewID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.17" />
+        app:layout_constraintWidth_percent="0.18" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/qtdProdutosID"
-        app:layout_constraintEnd_toStartOf="@+id/nomeProdutoID"
-        app:layout_constraintStart_toEndOf="@+id/qtdProdutosID"
-        app:layout_constraintTop_toTopOf="@+id/qtdProdutosID" />
+        app:layout_constraintBottom_toBottomOf="@+id/debitosViewID"
+        app:layout_constraintEnd_toStartOf="@+id/clienteViewID"
+        app:layout_constraintStart_toEndOf="@+id/debitosViewID"
+        app:layout_constraintTop_toTopOf="@+id/debitosViewID" />
 
     <TextView
         android:id="@+id/nometextID"
@@ -129,12 +129,12 @@
         android:textAppearance="@style/opensanssemibold"
         android:textColor="@color/branco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/nomeProdutoID"
+        app:layout_constraintBottom_toTopOf="@id/clienteViewID"
         app:layout_constraintStart_toEndOf="@+id/qtdtextID"
         app:layout_constraintWidth_percent="0.33" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nomeProdutoID"
+    <ListView
+        android:id="@+id/clienteViewID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/branco"
@@ -148,9 +148,9 @@
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/nomeProdutoID"
-        app:layout_constraintStart_toEndOf="@+id/nomeProdutoID"
-        app:layout_constraintTop_toTopOf="@+id/nomeProdutoID" />
+        app:layout_constraintBottom_toBottomOf="@+id/clienteViewID"
+        app:layout_constraintStart_toEndOf="@+id/clienteViewID"
+        app:layout_constraintTop_toTopOf="@+id/clienteViewID" />
 
     <TextView
         android:id="@+id/valorTextID"
@@ -162,12 +162,12 @@
         android:textAppearance="@style/opensanssemibold"
         android:textColor="@color/branco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/valorProdutoID"
+        app:layout_constraintBottom_toTopOf="@+id/valorTotalID"
         app:layout_constraintStart_toEndOf="@+id/nometextID"
         app:layout_constraintWidth_percent="0.26" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/valorProdutoID"
+    <ListView
+        android:id="@+id/valorTotalID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/branco"
@@ -181,9 +181,9 @@
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/valorProdutoID"
-        app:layout_constraintStart_toEndOf="@+id/valorProdutoID"
-        app:layout_constraintTop_toTopOf="@+id/valorProdutoID" />
+        app:layout_constraintBottom_toBottomOf="@+id/valorTotalID"
+        app:layout_constraintStart_toEndOf="@+id/valorTotalID"
+        app:layout_constraintTop_toTopOf="@+id/valorTotalID" />
 
     <TextView
         android:id="@+id/acoestextID"
@@ -195,18 +195,29 @@
         android:textAppearance="@style/opensanssemibold"
         android:textColor="@color/branco"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/acoesID"
+        app:layout_constraintBottom_toTopOf="@+id/EditarID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/valorTextID"
-        app:layout_constraintWidth_percent="0.24" />
+        app:layout_constraintWidth_percent="0.23" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/acoesID"
+    <ListView
+        android:id="@+id/EditarID"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider3"
-        app:layout_constraintWidth_percent="0.24" />
+        app:layout_constraintWidth_percent="0.117" />
+
+    <ListView
+        android:id="@+id/removerID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.70"
+        app:layout_constraintWidth_percent="0.117" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

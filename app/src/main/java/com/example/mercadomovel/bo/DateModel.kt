@@ -1,4 +1,4 @@
-package com.example.mercadomovel.model
+package com.example.mercadomovel.bo
 
 import androidx.room.TypeConverter
 import java.util.Date

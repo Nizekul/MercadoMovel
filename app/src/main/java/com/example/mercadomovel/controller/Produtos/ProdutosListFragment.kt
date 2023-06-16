@@ -9,14 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.mercadomovel.R
 import com.example.mercadomovel.databinding.FragmentProdutosListBinding
+import com.example.mercadomovel.model.ProdutosViewModel
+import com.example.mercadomovel.model.Util
 import com.example.projetinhodeestudo.data.AppDataBase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 
@@ -31,12 +33,6 @@ class ProdutosListFragment : Fragment() {
     private lateinit var listViewValor: ListView
     private lateinit var listViewAcoesEditar: ListView
     private lateinit var listViewAcoesRemover: ListView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,7 +68,7 @@ class ProdutosListFragment : Fragment() {
         val iconEditarId = R.drawable.editar
         val iconRemoverId = R.drawable.remove_produtos
 
-        var valor = mutableListOf<Double>()
+        var valor = mutableListOf<String>()
 
         list?.let { productList ->
             for (produto in productList) {
@@ -80,18 +76,18 @@ class ProdutosListFragment : Fragment() {
                 val displayQtd = qtd?.toString() ?: "-- --"
 
                 nomeProduto.add(produto.nome)
-                valor.add(produto.valor)
+                valor.add(Util.formatarParaDinheiro(produto.valor.toString()))
                 qtdList.add(displayQtd)
                 produto.id?.let { produtosIdList.add(it) }
             }
         }
 
         var context = activity?.baseContext as Context
-        var resource = android.R.layout.simple_list_item_1
+//        var resource = android.R.layout.simple_list_item_1
 
-        var adapterQtd: ArrayAdapter<String> = ArrayAdapter(context, resource, qtdList)
-        val adapterValor: TextAdapter = TextAdapter(context, R.layout.list_textos, nomeProduto)
-        val adapterNome: TextAdapter = TextAdapter(context, resource, nomeProduto)
+        var adapterQtd: TextAdapter = TextAdapter(context, R.layout.list_textos, qtdList)
+        val adapterValor: TextAdapter = TextAdapter(context, R.layout.list_textos, valor)
+        val adapterNome: TextAdapter = TextAdapter(context, R.layout.list_textos, nomeProduto)
         val adapterAcoesEditar: CustomAdapter = CustomAdapter(context, R.layout.list_itens_icons, produtosIdList, iconEditarId)
         var adapterAcoesRemover: CustomAdapter = CustomAdapter(context, R.layout.list_itens_icons, produtosIdList, iconRemoverId)
 
@@ -101,10 +97,11 @@ class ProdutosListFragment : Fragment() {
         listViewAcoesEditar.adapter = adapterAcoesEditar
         listViewAcoesRemover.adapter = adapterAcoesRemover
 
-        listViewAcoesRemover.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val produtoID = produtosIdList[position]
-            deletarProduto(produtoID)
-        }
+        listViewAcoesRemover.onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, position, _ ->
+                val produtoID = produtosIdList[position]
+                deletarProduto(produtoID)
+            }
 
         listViewAcoesEditar.setOnItemClickListener { _, _, position, _ ->
             val produtoID = produtosIdList[position]
@@ -121,7 +118,7 @@ class ProdutosListFragment : Fragment() {
         val confimacao = AlertDialog.Builder(requireContext())
 
         confimacao.setTitle("Tem certeza que deseja exluir este produto?")
-        confimacao.setMessage("Ao clicar em \"Confirmar\" séra exluido permanentemente?")
+        confimacao.setMessage("Ao clicar em \"Confirmar\" séra exluido permanentemente!")
 
         confimacao.setPositiveButton("Confirmar") { _, _ ->
             produtoDAO.deletePorID(id)
@@ -135,7 +132,12 @@ class ProdutosListFragment : Fragment() {
     }
 
 
-    class CustomAdapter(context: Context, resource: Int, objects: List<Int>, private val iconResourceId: Int) :
+    class CustomAdapter(
+        context: Context,
+        resource: Int,
+        objects: List<Int>,
+        private val iconResourceId: Int
+    ) :
         ArrayAdapter<Int>(context, resource, objects) {
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

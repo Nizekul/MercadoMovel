@@ -40,12 +40,13 @@
         android:backgroundTint="@color/ciano"
         android:drawableLeft="@drawable/add"
         android:text="@string/adicionar_produto"
+        android:padding="1.5dp"
         android:textColor="@color/white"
         android:textFontWeight="23"
         android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.36" />
+        app:layout_constraintWidth_percent="0.33" />
 
     <Button
         android:id="@+id/btnBuscar"
@@ -71,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@id/qtdProdutosID"
         app:layout_constraintEnd_toStartOf="@+id/nometextID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.18" />
 
     <ListView
         android:id="@+id/qtdProdutosID"
@@ -82,7 +83,7 @@
         app:layout_constraintEnd_toStartOf="@+id/divider"
         app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.18" />
 
     <View
         android:id="@+id/divider"
@@ -173,7 +174,7 @@
         app:layout_constraintBottom_toTopOf="@+id/EditarID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/valorTextID"
-        app:layout_constraintWidth_percent="0.26" />
+        app:layout_constraintWidth_percent="0.23" />
 
     <ListView
         android:id="@+id/EditarID"
@@ -183,7 +184,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.70"
         app:layout_constraintStart_toEndOf="@+id/divider3"
-        app:layout_constraintWidth_percent="0.132" />
+        app:layout_constraintWidth_percent="0.117" />
 
     <ListView
         android:id="@+id/removerID"
@@ -193,7 +194,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.70"
-        app:layout_constraintWidth_percent="0.132" />
+        app:layout_constraintWidth_percent="0.117" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

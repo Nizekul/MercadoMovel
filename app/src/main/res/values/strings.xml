@@ -41,5 +41,6 @@
     <string name="dtFim">Data Fim</string>
     <string name="addCliente">Cliente</string>
     <string name="adicionar_produto">Produto</string>
+    <string name="limpar">Limpar</string>
 
 </resources>

@@ -45,6 +45,7 @@
     <string name="debitos">Débitos</string>
     <string name="dtInicio">Data Início</string>
     <string name="dtFim">Data Fim</string>
+    <string name="limpar">Limpar</string>
 
 
 </resources>

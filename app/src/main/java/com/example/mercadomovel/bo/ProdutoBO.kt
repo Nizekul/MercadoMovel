@@ -1,4 +1,4 @@
-package com.example.mercadomovel.model
+package com.example.mercadomovel.bo
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
@@ -9,7 +9,7 @@ import java.util.Date
 
 @Entity(tableName = "Produtos")
 @TypeConverters(DateModel::class)
-data class ProdutoModel(
+data class ProdutoBO(
     @PrimaryKey(autoGenerate = true) var id: Int?,
     @NonNull
     @ColumnInfo(name = "nome") val nome: String,
