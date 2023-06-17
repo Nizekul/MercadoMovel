@@ -19,6 +19,7 @@ import com.example.mercadomovel.R
 import com.example.mercadomovel.databinding.FragmentProdutosListBinding
 import com.example.mercadomovel.model.ProdutosViewModel
 import com.example.mercadomovel.model.Util
+import com.example.mercadomovel.model.formatarParaDinheiro
 import com.example.projetinhodeestudo.data.AppDataBase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 
@@ -76,7 +77,7 @@ class ProdutosListFragment : Fragment() {
                 val displayQtd = qtd?.toString() ?: "-- --"
 
                 nomeProduto.add(produto.nome)
-                valor.add(Util.formatarParaDinheiro(produto.valor.toString()))
+                valor.add("R$ "+ produto.valor.formatarParaDinheiro())
                 qtdList.add(displayQtd)
                 produto.id?.let { produtosIdList.add(it) }
             }

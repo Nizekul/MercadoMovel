@@ -46,52 +46,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cnpjtextID" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/pretoclaro"
-        android:gravity="center"
-        android:text="@string/qtd_produtos"
-        android:textAppearance="@style/opensanssemibold"
-        android:textColor="@color/branco"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/qtdProdutosListView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.2" />
-
-    <ListView
-        android:id="@+id/qtdProdutosListView"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ProdutosListView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/branco"
         app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintHeight_percent="0.56"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.2" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintStart_toEndOf="@+id/qtdProdutosListView"
-        app:layout_constraintTop_toTopOf="@+id/qtdProdutosListView" />
-
-    <TextView
-        android:id="@+id/nometextID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/pretoclaro"
-        android:gravity="center"
-        android:text="@string/produtos"
-        android:textAppearance="@style/opensanssemibold"
-        android:textColor="@color/branco"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/nomeProdutoListView"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/qtdProdutoaddID"
@@ -101,85 +65,35 @@
         android:hint="@string/qtd_produtos"
         android:inputType="number"
         android:paddingTop="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/nometextID"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/ProdutosListView"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/nomeProdutoaddID"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="2dp"
         android:hint="@string/produtos"
         android:paddingTop="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/nometextID"
-        app:layout_constraintEnd_toEndOf="@+id/nometextID"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
-
-    <ListView
-        android:id="@+id/nomeProdutoListView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintEnd_toStartOf="@+id/valorListView"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintStart_toEndOf="@+id/nomeProdutoListView"
-        app:layout_constraintTop_toTopOf="@+id/nomeProdutoListView" />
+        app:layout_constraintBottom_toTopOf="@+id/ProdutosListView"
+        app:layout_constraintEnd_toStartOf="@+id/btnAdicionar"
+        app:layout_constraintStart_toEndOf="@+id/qtdProdutoaddID" />
 
 
     <Button
         android:id="@+id/btnAdicionar"
         android:layout_width="60dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="3dp"
         android:backgroundTint="@color/ciano"
         android:drawableBottom="@drawable/carrinho_compras"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/acoestextID"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toEndOf="@+id/nometextID"
         app:layout_constraintTop_toTopOf="@+id/nomeProdutoaddID"
-        app:layout_constraintVertical_bias="0.75"
         app:layout_constraintWidth_percent="0.25" />
-
-    <TextView
-        android:id="@+id/acoestextID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/pretoclaro"
-        android:gravity="center"
-        android:text="@string/valor"
-        android:textAppearance="@style/opensanssemibold"
-        android:textColor="@color/branco"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/valorListView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.30" />
-
-    <ListView
-        android:id="@+id/valorListView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/branco"
-        app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.56"
-        app:layout_constraintWidth_percent="0.29" />
 
     <TextView
         android:id="@+id/totalTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:gravity="right"
         android:padding="8dp"
         android:text="Total:"
@@ -205,7 +119,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/cancelarButton"
+        android:id="@+id/limparbtn"
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:layout_marginLeft="2dp"
@@ -222,6 +136,6 @@
         android:backgroundTint="@color/ciano"
         android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cancelarButton" />
+        app:layout_constraintStart_toEndOf="@+id/limparbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

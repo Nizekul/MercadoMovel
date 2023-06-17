@@ -1,20 +1,13 @@
 package com.example.mercadomovel.controller.Home
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
-import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.NavController
@@ -22,16 +15,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mercadomovel.R
-import com.example.mercadomovel.bo.ProdutoBO
-import com.example.mercadomovel.controller.Produtos.ProdutosListFragment
 import com.example.mercadomovel.dao.ClientesDAO
 import com.example.mercadomovel.databinding.FragmentHomeBinding
 import com.example.mercadomovel.model.Util
+import com.example.mercadomovel.model.converterParaDouble
 import com.example.mercadomovel.model.formatarParaDinheiro
 import com.example.projetinhodeestudo.data.AppDataBase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 import com.google.android.material.appbar.MaterialToolbar
-import com.example.mercadomovel.model.formatarParaDinheiro
 
 class HomeFragment : Fragment() {
 
@@ -40,10 +31,12 @@ class HomeFragment : Fragment() {
     private lateinit var db: AppDataBase
     private lateinit var produtoDAO: ProdutosDAO
     private lateinit var clienteDAO: ClientesDAO
-    lateinit var produtoListView: ListView
-    lateinit var qtdProdutosListView: ListView
-    lateinit var valorProdutosListView: ListView
-    data class Produto(val nome: String, val id: Int, val valor: Double)
+    lateinit var produtoListView: RecyclerView
+    private val produtos = mutableListOf<HomeFragment.Produto>()
+    val produtosSelecionados = mutableListOf<Produto>()
+    private lateinit var produtoAdapter: ProdutoAdapter
+    private var total: Double = 0.0
+    data class Produto(val nome: String, val id: Int, val valor: String, val qtd: Double)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,13 +48,17 @@ class HomeFragment : Fragment() {
         db = AppDataBase.getInstance(requireContext().applicationContext)
         produtoDAO = db.produtoDAO()
         clienteDAO = db.clientesDAO()
-        produtoListView = binding.nomeProdutoListView
-        qtdProdutosListView = binding.qtdProdutosListView
-        valorProdutosListView = binding.valorListView
+        produtoListView = binding.ProdutosListView
 
         preencherCliente()
         preencherProduto()
-
+        binding.limparbtn.setOnClickListener {
+            produtosSelecionados.clear()
+            produtoAdapter.notifyDataSetChanged()
+            binding.nomeProdutoaddID.setSelection(0)
+            binding.qtdProdutoaddID.text.clear()
+            binding.valorTotalTextViewID.text = "R$ 0,00"
+        }
         return binding.root
     }
 
@@ -147,90 +144,147 @@ class HomeFragment : Fragment() {
 
     private fun preencherProduto() {
         val produtoList = produtoDAO.getTodas()
-        val itemEdt = binding.nomeProdutoaddID
-        val qtdEdt = binding.qtdProdutoaddID
         var produtoNome = mutableListOf<String>()
         var produtoID = mutableListOf<Int>()
         var valorUnidade = mutableListOf<Double>()
-        val produtosSelecionados = mutableListOf<String>()
-        val quantidadesSelecionadas = ArrayList<String>()
-        val valorXproduto = ArrayList<String>()
         var textTotal = binding.valorTotalTextViewID.text.toString()
-        var total = Util.converterParaDouble(textTotal)
+        total = Util.converterParaDouble(textTotal)
+        val spinner = binding.nomeProdutoaddID
+        produtoListView.layoutManager = LinearLayoutManager(requireContext())
 
-        if (produtoList != null) {
-            for (produto in produtoList) {
+        produtoAdapter = ProdutoAdapter(produtosSelecionados)
+        produtoListView.adapter = produtoAdapter
+
+        produtoList?.let { produtos ->
+            for (produto in produtos) {
                 produto.id?.let {
-                    Produto(produto.nome, it, produto.valor)
+                    produtoID.add(it)
+                    valorUnidade.add(produto.valor)
+                    produtoNome.add(produto.nome)
                 }
             }
         }
 
-        val adapter: ArrayAdapter<String> = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_dropdown_item_1line,
-            produtoList?.map { "${it.nome}|${it.id}|${it.valor}" } ?: emptyList()
-        )
-        val context = activity?.baseContext as Context
+        val adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, produtoNome)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
 
-        itemEdt.setAdapter(adapter)
-        itemEdt.threshold = 1
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val produtoSelecionado = produtoList?.get(position)
+                if (produtoSelecionado != null) {
+                    val produtoSelecionado = produtoList[position]
+                    val nomeProdutoSelecionado = produtoSelecionado.nome
+                    val idProdutoSelecionado = produtoSelecionado.id
+                    val valorUnidadeProdutoSelecionado =
+                        produtoSelecionado.valor.formatarParaDinheiro()
+                    val qtdEdt = binding.qtdProdutoaddID.text.toString()
 
-        var produtoSelecionado: String? = null
+                    val quantidade = if (qtdEdt.isNotEmpty()) qtdEdt.toDouble() else 0.0
 
-        itemEdt.setOnItemClickListener { parent, view, position, _ ->
-            produtoSelecionado = adapter.getItem(position)
-            val nome = produtoSelecionado!!.substringBefore("|")
-            itemEdt.setText(nome)
-            itemEdt.clearFocus()
+                    // Adicionar o produto selecionado à RecyclerView
+                    val produto = HomeFragment.Produto(
+                        nomeProdutoSelecionado,
+                        idProdutoSelecionado!!,
+                        valorUnidadeProdutoSelecionado,
+                        quantidade
+                    )
+                    produtos.add(produto)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nenhuma ação necessária quando nenhum item é selecionado
+            }
         }
 
-        val addButton = binding.btnAdicionar
-        addButton.setOnClickListener {
-            val quantidade = qtdEdt.text.toString()
+        binding.btnAdicionar.setOnClickListener {
+            val nomeProduto = binding.nomeProdutoaddID.selectedItem.toString()
+            val quantidade = binding.qtdProdutoaddID.text.toString()
+            val qtdEdt = binding.qtdProdutoaddID.text.toString()
 
-            if (produtoSelecionado != null && quantidade.isNotEmpty()) {
-                val nome = produtoSelecionado!!.substringBefore("|")
-                val valorUnidade = produtoSelecionado!!.substringAfterLast("|").toDouble()
+            if (nomeProduto.isNotEmpty() && quantidade.isNotEmpty()) {
+                val produtoSelecionado =
+                    produtoList?.get(binding.nomeProdutoaddID.selectedItemPosition)
+                if (produtoSelecionado != null) {
+                    val nomeProdutoSelecionado = qtdEdt + " - " + produtoSelecionado.nome
+                    val idProdutoSelecionado = produtoSelecionado.id
+                    val valorUnidadeProdutoSelecionado =
+                        "Unidade R$ " + produtoSelecionado.valor.formatarParaDinheiro()
 
-                produtosSelecionados.add(nome)
-                quantidadesSelecionadas.add(quantidade)
+                    val produto = Produto(
+                        nomeProdutoSelecionado,
+                        idProdutoSelecionado!!,
+                        valorUnidadeProdutoSelecionado,
+                        qtdEdt.toDouble()
+                    )
+                    produtosSelecionados.add(produto)
+                    adapter.notifyDataSetChanged()
 
-                var valorSomaProduto = quantidade.toInt() * valorUnidade
-                valorXproduto.add(Util.formatarParaDinheiro(valorSomaProduto.toString()))
-                total += quantidade.toInt() * valorUnidade
+                    // Limpar os campos após adicionar o produto
+                    binding.nomeProdutoaddID.setSelection(0)
+                    binding.qtdProdutoaddID.text.clear()
 
-                val adapterNome: ArrayAdapter<String> = ArrayAdapter(
-                    context,
-                    android.R.layout.simple_list_item_1,
-                    produtosSelecionados
-                )
-                val adapterQtd: ArrayAdapter<String> = ArrayAdapter(
-                    context,
-                    android.R.layout.simple_list_item_1,
-                    quantidadesSelecionadas
-                )
-                val adapterValorXQuantidade: ArrayAdapter<String> = ArrayAdapter(
-                    context,
-                    android.R.layout.simple_list_item_1,
-                    valorXproduto
-                )
+                    // Atualizar o total
+                    total += produtoSelecionado.valor * quantidade.toDouble()
+                    binding.valorTotalTextViewID.text = "R$ " + total.formatarParaDinheiro()
 
-                produtoListView.adapter = adapterNome
-                qtdProdutosListView.adapter = adapterQtd
-                valorProdutosListView.adapter = adapterValorXQuantidade
-
-                binding.valorTotalTextViewID.text = Util.formatarParaDinheiro(total.toString())
-
-                itemEdt.text.clear()
-                qtdEdt.text.clear()
-                produtoSelecionado = null
+                }
             } else {
-                Toast.makeText(
-                    context,
-                    "Insira a quantidade e selecione um produto",
-                    Toast.LENGTH_SHORT
-                ).show()
+                // Exibir uma mensagem de erro caso algum campo esteja vazio
+                Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
+    inner class ProdutoAdapter(private val produtoList: List<Produto>) :
+        RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
+
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview, parent, false)
+            return ProdutoViewHolder(itemView)
+        }
+
+        override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
+            val currentProduto = produtoList[position]
+            holder.bind(currentProduto, position)
+        }
+
+        override fun getItemCount() = produtoList.size
+
+        inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val nomeProdutoTextView: TextView = itemView.findViewById(R.id.nomeProduto)
+            val valorUnidadeTextView: TextView = itemView.findViewById(R.id.valorUnidade)
+
+            fun bind(produto: Produto, position: Int) {
+                nomeProdutoTextView.text = produto.nome
+                valorUnidadeTextView.text = produto.valor
+                // Configurar outros campos do item do RecyclerView, se houver
+
+                itemView.setOnClickListener {
+                    val alertDialogBuilder = AlertDialog.Builder(itemView.context)
+                    alertDialogBuilder.setTitle("Remover Produto")
+                    alertDialogBuilder.setMessage("Deseja remover este produto?")
+                    alertDialogBuilder.setPositiveButton("Sim") { _, _ ->
+                        total -= produto.valor.converterParaDouble() * produto.qtd
+                        binding.valorTotalTextViewID.text = "R$ " + total.formatarParaDinheiro()
+                        produtosSelecionados.removeAt(position)
+                        notifyItemRemoved(position)
+
+                    }
+                    alertDialogBuilder.setNegativeButton("Não", null)
+                    val alertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
+                }
             }
         }
     }

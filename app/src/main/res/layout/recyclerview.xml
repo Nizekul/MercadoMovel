@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="1dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <!-- In the above cardview widget cardelevation property will give elevation to your card view
+        card corner radius will provide radius to your card view card background color will give
+        background color to your card view card max elevation will give the cardview maximum
+        elevation card prevent corner overlap will add padding to CardView on v20 and before to
+        prevent intersections between the Card content and rounded corners. Card use compact padding
+        will add padding in API v21+ as well to have the same measurements with previous versions -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ImageVIew to display our Course Image -->
+        <ImageView
+            android:id="@+id/idIVCourseImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/app_name"
+            android:padding="0dp"
+            android:src="@drawable/carrinho_compras" />
+
+        <!-- Text View to display Course Name -->
+        <TextView
+            android:id="@+id/nomeProduto"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:text="TESTE"
+            android:layout_toEndOf="@id/idIVCourseImage"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Text VIew to display Course Rating -->
+        <!-- Image used in present in drawable folder -->
+        <TextView
+            android:id="@+id/remover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nomeProduto"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@id/idIVCourseImage"
+            android:textSize="13sp"
+            android:textColor="@color/preto"
+            android:drawablePadding="15dp"
+            android:text="Remover"
+            app:drawableStartCompat="@drawable/remove_produtos" />
+
+        <TextView
+            android:id="@+id/valorUnidade"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignBaseline="@id/remover"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/remover"
+            android:layout_toRightOf="@id/remover"
+            android:textSize="12sp"
+            android:textColor="@color/preto" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

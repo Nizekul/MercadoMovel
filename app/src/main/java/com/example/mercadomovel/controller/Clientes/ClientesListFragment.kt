@@ -17,6 +17,7 @@ import com.example.mercadomovel.dao.ClientesDAO
 import com.example.mercadomovel.dao.VendasDAO
 import com.example.mercadomovel.databinding.FragmentClientesListBinding
 import com.example.mercadomovel.model.Util
+import com.example.mercadomovel.model.formatarParaDinheiro
 import com.example.projetinhodeestudo.data.AppDataBase
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 
@@ -78,7 +79,7 @@ class ClientesListFragment : Fragment() {
                     clientesIdList.add(it)
                     debitos.add(vendasDAO.getQuantidadeDividasPorCLienteID(it).toString())
                     valorFormatado = vendasDAO.getVendaPorCLienteID(it).toString()
-                    valorFormatado = Util.formatarParaDinheiro(valorFormatado)
+//                    valorFormatado = Util.formatarParaDinheiro("R$ "+ valorFormatado.toDouble())
                     dividaTotal.add(valorFormatado)
                 }
             }

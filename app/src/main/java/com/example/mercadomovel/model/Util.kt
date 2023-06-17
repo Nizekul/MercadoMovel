@@ -15,31 +15,6 @@ import java.util.Locale
 
 class Util {
     companion object {
-
-
-        fun formatarParaDinheiro(valor: String): String {
-            val df: DecimalFormat =
-                NumberFormat.getCurrencyInstance(Locale("pt", "BR")) as DecimalFormat
-
-            val cleanString = if (valor.matches("^.*\\.\\d$".toRegex())) {
-                valor.replace(
-                    "[R$,.\\s]".toRegex(),
-                    ""
-                ) + "0"  // Adiciona um zero ao final se terminar com uma casa decimal
-            } else {
-                valor.replace("[R$,.\\s]".toRegex(), "")
-            }
-
-            val parsed: Double = if (cleanString.isNotEmpty()) {
-                val doubleValue = cleanString.toDouble()
-                doubleValue / 100  // Dividir por 100 se tiver duas casas decimais
-            } else {
-                0.0
-            }
-
-            return df.format(parsed)
-        }
-
         fun formatarData(valor: String): String {
             val cleanString = valor.replace("[^\\d.]".toRegex(), "")
             val formattedString = StringBuilder()
@@ -56,6 +31,12 @@ class Util {
 
             return formattedString.toString()
         }
+        fun formatarParaDinheiro(valor: Double): String{
+            val format = DecimalFormat("#.###,00")
+            format.isDecimalSeparatorAlwaysShown = false
+
+            return format.format(this).toString()
+        }
 
         fun converterParaDouble(valorFormatado: String): Double {
             val cleanString = valorFormatado.replace("[R$,.\\s]".toRegex(), "")
@@ -66,6 +47,17 @@ class Util {
             }
         }
     }
+}
+
+
+fun Double.formatarParaDinheiro(): String {
+    if (this == 0.0) {
+        return "0.00"
+    }
+
+    val format = DecimalFormat("#,###.00")
+    format.isDecimalSeparatorAlwaysShown = false
+    return format.format(this).toString()
 }
 
 fun EditText.formatarParaDinheiro() {
@@ -113,7 +105,7 @@ fun EditText.formatarParaDinheiro() {
 }
 
 fun String.converterParaDouble(): Double {
-    val cleanString = this.replace("[R$,.\\s]".toRegex(), "")
+    val cleanString = this.replace("[R$,Unidade,.\\s]".toRegex(), "")
     return if (cleanString.isNotEmpty()) {
         cleanString.toDouble() / 100
     } else {
