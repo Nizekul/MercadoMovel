@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cliente_fragmentID"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto"
+    tools:context=".controller.Login.LoginFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/tituloTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="    MM\nLOGIN"
+        android:textAppearance="@style/fonteMarca"
+        android:textColor="@color/branco"
+        app:title="MM"
+        app:titleTextAppearance="@style/fonteMarca"
+        app:titleTextColor="@color/branco"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/loginID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="8dp"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:textColor="@color/branco"
+        android:textColorHint="@color/branco"
+        app:layout_constraintBottom_toTopOf="@+id/senhaID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/senhaID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:textColor="@color/branco"
+        android:textColorHint="@color/branco"
+        app:layout_constraintBottom_toTopOf="@+id/loginID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnlogarID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="8dp"
+        android:backgroundTint="@color/ciano"
+        android:text="Entrar"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/centerGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/senhaID" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

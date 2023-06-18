@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/pretoclaro"
     tools:context=".controller.Home.HomeFragment">
 
     <Spinner
@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="2dp"
+        android:hint="@string/qtd_produtos"
+        android:textColor="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/enderecotextID"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -19,9 +21,10 @@
         android:id="@+id/enderecotextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:padding="2dp"
         android:text="@string/endereco_cliente"
-        android:textColor="@color/preto"
+        android:textColor="@color/branco"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/telefonetextID" />
 
@@ -30,8 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="2dp"
+        android:layout_margin="4dp"
         android:text="@string/cnpj_cliente"
-        android:textColor="@color/preto"
+        android:textColor="@color/branco"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/nomeProdutoaddID"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -39,10 +43,11 @@
     <TextView
         android:id="@+id/telefonetextID"
         android:layout_width="match_parent"
+        android:layout_margin="4dp"
         android:layout_height="wrap_content"
         android:padding="2dp"
         android:text="@string/tel_cliente"
-        android:textColor="@color/preto"
+        android:textColor="@color/branco"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cnpjtextID" />
 
@@ -50,20 +55,21 @@
         android:id="@+id/ProdutosListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/branco"
+        android:background="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/totalTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/qtdProdutoaddID"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="4dp"
         android:hint="@string/qtd_produtos"
         android:inputType="number"
+        android:textColorHint="@color/branco"
+        android:textColor="@color/branco"
         android:paddingTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/ProdutosListView"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,6 +78,7 @@
         android:id="@+id/nomeProdutoaddID"
         android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_margin="4dp"
         android:hint="@string/produtos"
         android:paddingTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/ProdutosListView"
@@ -96,6 +103,7 @@
         android:layout_height="40dp"
         android:gravity="right"
         android:padding="8dp"
+        android:textColor="@color/branco"
         android:text="Total:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -110,6 +118,7 @@
         android:padding="8dp"
         android:text="R$ 0,00"
         android:textSize="18sp"
+        android:textColor="@color/branco"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +132,7 @@
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:layout_marginLeft="2dp"
+        android:textColor="@color/branco"
         android:backgroundTint="@color/vermelho"
         android:text="@string/limpar"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -133,6 +143,7 @@
         android:layout_width="91dp"
         android:layout_height="40dp"
         android:layout_marginLeft="2dp"
+        android:textColor="@color/branco"
         android:backgroundTint="@color/ciano"
         android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"

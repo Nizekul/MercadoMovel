@@ -17,14 +17,21 @@
         android:title="@string/vendas"></item>
 
     <item
-        android:id="@+id/produtosIconID"
+        android:id="@+id/clienteIconID"
         android:icon="@drawable/carrinho_compras"
         android:contentDescription="@string/produtos"
         app:showAsAction="always"
         android:title="@string/produtos"></item>
 
     <item
-        android:id="@+id/clienteIconID"
+        android:id="@+id/produtosIconID"
+        android:icon="@drawable/produto_carrinho"
+        android:contentDescription="@string/produtos"
+        app:showAsAction="always"
+        android:title="@string/produtos"></item>
+
+    <item
+        android:id="@+id/usuariosIconID"
         android:icon="@drawable/cliente"
         android:contentDescription="@string/cilenteIcon"
         app:showAsAction="always"

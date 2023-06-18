@@ -46,6 +46,10 @@
     <string name="dtInicio">Data Início</string>
     <string name="dtFim">Data Fim</string>
     <string name="limpar">Limpar</string>
+    <string name="usuario">Usuário</string>
+    <string name="novo_user">CADASTRAR USUÁRIO</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
 
 
 </resources>

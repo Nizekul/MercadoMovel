@@ -1,7 +1,11 @@
 package com.example.mercadomovel.controller.Home
 
 import android.app.AlertDialog
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,11 +36,12 @@ class HomeFragment : Fragment() {
     private lateinit var produtoDAO: ProdutosDAO
     private lateinit var clienteDAO: ClientesDAO
     lateinit var produtoListView: RecyclerView
-    private val produtos = mutableListOf<HomeFragment.Produto>()
-    val produtosSelecionados = mutableListOf<Produto>()
+    private val produtos = mutableListOf<Produto>()
+    val produtosSelecionados = mutableListOf<HomeFragment.Produto>()
     private lateinit var produtoAdapter: ProdutoAdapter
     private var total: Double = 0.0
     data class Produto(val nome: String, val id: Int, val valor: String, val qtd: Double)
+    private lateinit var vibrator: Vibrator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,15 +54,23 @@ class HomeFragment : Fragment() {
         produtoDAO = db.produtoDAO()
         clienteDAO = db.clientesDAO()
         produtoListView = binding.ProdutosListView
+        vibrator = requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         preencherCliente()
         preencherProduto()
         binding.limparbtn.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator?.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                @Suppress("DEPRECATION")
+                vibrator?.vibrate(200)
+            }
             produtosSelecionados.clear()
             produtoAdapter.notifyDataSetChanged()
             binding.nomeProdutoaddID.setSelection(0)
             binding.qtdProdutoaddID.text.clear()
             binding.valorTotalTextViewID.text = "R$ 0,00"
+            total = 0.0
         }
         return binding.root
     }
@@ -85,6 +98,11 @@ class HomeFragment : Fragment() {
 
                 R.id.clienteIconID -> {
                     navigation.navigate(R.id.clientesListFragment)
+                    true
+                }
+
+                R.id.usuariosIconID -> {
+                    navigation.navigate(R.id.loginListFragment)
                     true
                 }
 
@@ -271,6 +289,12 @@ class HomeFragment : Fragment() {
                 // Configurar outros campos do item do RecyclerView, se houver
 
                 itemView.setOnClickListener {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator?.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+                    } else {
+                        @Suppress("DEPRECATION")
+                        vibrator?.vibrate(200)
+                    }
                     val alertDialogBuilder = AlertDialog.Builder(itemView.context)
                     alertDialogBuilder.setTitle("Remover Produto")
                     alertDialogBuilder.setMessage("Deseja remover este produto?")

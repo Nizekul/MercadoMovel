@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_clientesListFragment"
             app:destination="@id/clientesListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginListFragment"
+            app:destination="@id/loginListFragment" />
     </fragment>
     <fragment
         android:id="@+id/produtosListFragment"
@@ -45,4 +48,27 @@
         android:name="com.example.mercadomovel.controller.Produtos.ProdutosFragment"
         android:label="fragment_cadastros_produtos"
         tools:layout="@layout/fragment_cadastros_produtos" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.mercadomovel.controller.Login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginListFragment"
+        android:name="com.example.mercadomovel.controller.Login.LoginListFragment"
+        android:label="fragment_login_list"
+        tools:layout="@layout/fragment_login_list" >
+        <action
+            android:id="@+id/action_loginListFragment_to_loginCadastroFragment"
+            app:destination="@id/loginCadastroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginCadastroFragment"
+        android:name="com.example.mercadomovel.controller.Login.LoginCadastroFragment"
+        android:label="fragment_login_cadastro"
+        tools:layout="@layout/fragment_login_cadastro" />
 </navigation>
