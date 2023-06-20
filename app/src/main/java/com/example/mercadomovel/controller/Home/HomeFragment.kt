@@ -51,6 +51,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         navigation = findNavController()
         db = AppDataBase.getInstance(requireContext().applicationContext)
+
         produtoDAO = db.produtoDAO()
         clienteDAO = db.clientesDAO()
         produtoListView = binding.ProdutosListView
@@ -87,7 +88,7 @@ class HomeFragment : Fragment() {
                 }
 
                 R.id.vendasIconID -> {
-                    navigation.navigate(R.id.homeFragment)
+                    navigation.navigate(R.id.vendasFragment)
                     true
                 }
 
@@ -219,7 +220,6 @@ class HomeFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Nenhuma ação necessária quando nenhum item é selecionado
             }
         }
 

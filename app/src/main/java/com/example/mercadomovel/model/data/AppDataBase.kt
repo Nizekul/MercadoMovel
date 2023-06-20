@@ -10,7 +10,7 @@ import com.example.mercadomovel.bo.UsuarioBO
 import com.example.mercadomovel.dao.ClientesDAO
 import com.example.mercadomovel.dao.UsuariosDAO
 import com.example.mercadomovel.dao.VendasDAO
-import com.example.mercadomovel.model.data.VendasBO
+import com.example.mercadomovel.bo.VendasBO
 import com.example.projetinhodeestudo.data.dao.ProdutosDAO
 
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_loginListFragment"
             app:destination="@id/loginListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_vendasFragment"
+            app:destination="@id/vendasFragment" />
     </fragment>
     <fragment
         android:id="@+id/produtosListFragment"
@@ -71,4 +74,9 @@
         android:name="com.example.mercadomovel.controller.Login.LoginCadastroFragment"
         android:label="fragment_login_cadastro"
         tools:layout="@layout/fragment_login_cadastro" />
+    <fragment
+        android:id="@+id/vendasFragment"
+        android:name="com.example.mercadomovel.controller.Vendas.VendasFragment"
+        android:label="fragment_vendas"
+        tools:layout="@layout/fragment_vendas" />
 </navigation>
